@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class offerController extends Controller
 {
     public function index(){
-        return view();
+        return view('admin-views.business-settings.offer');
     }
 }
