@@ -102,7 +102,7 @@
                     @endforeach
                 </div>
                 @php($free_delivery_status = \App\CPU\OrderManager::free_delivery_order_amount($cart[0]->cart_group_id))
-                @if ($free_delivery_status['status'] && (session()->missing('coupon_type') || session('coupon_type') !='free_delivery'))
+                <!-- @if ($free_delivery_status['status'] && (session()->missing('coupon_type') || session('coupon_type') !='free_delivery'))
                 <div class="py-3">
                     <img src="{{asset('/public/assets/front-end/img/truck.svg')}}" alt="">
                     <span class="amount_fullfill text-accent __text-12px {{$free_delivery_status['amount_need'] <= 0 ? '' :'d-none'}}">{{ translate('you_Get_Free_Delivery_Bonus') }}</span>
@@ -111,7 +111,7 @@
                         <div class="progress-bar" style="width: {{$free_delivery_status['percentage']}}%; background:var(--primary-clr)"></div>
                     </div>
                 </div>
-                @endif
+                @endif -->
                 <div class="d-flex flex-wrap justify-content-between align-items-center pb-2">
                     <div
                         class="font-size-sm {{Session::get('direction') === "rtl" ? 'ml-2 float-left' : 'mr-2 float-right'}} py-2 ">

@@ -237,7 +237,7 @@
                         </table>
                         <!-- free delivery section -->
                         @php($free_delivery_status = \App\CPU\OrderManager::free_delivery_order_amount($group[0]->cart_group_id))
-                        @if ($free_delivery_status['status'] && (session()->missing('coupon_type') || session('coupon_type') !='free_delivery'))
+                        <!-- @if ($free_delivery_status['status'] && (session()->missing('coupon_type') || session('coupon_type') !='free_delivery'))
                             <div class="free-delivery-area px-3 mb-3 mb-lg-2">
                                 <div class="d-flex align-items-center gap-8">
                                     <img class="__w-30px" src="{{ asset('public/assets/front-end/img/icons/free-shipping.png') }}" alt="" >
@@ -252,7 +252,7 @@
                                     <div class="progress-bar" role="progressbar" style="width: {{ $free_delivery_status['percentage'] }}%" aria-valuenow="{{ $free_delivery_status['percentage'] }}" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
-                        @endif
+                        @endif -->
                         <!-- end of free delivery section -->
                     </div>
                 @endforeach
@@ -463,7 +463,7 @@
 
                 <!-- free delivery section -->
                 @php($free_delivery_status = \App\CPU\OrderManager::free_delivery_order_amount($group[0]->cart_group_id))
-                @if ($free_delivery_status['status'] && (session()->missing('coupon_type') || session('coupon_type') !='free_delivery'))
+                <!-- @if ($free_delivery_status['status'] && (session()->missing('coupon_type') || session('coupon_type') !='free_delivery'))
                     <div class="free-delivery-area px-3 mb-3 mb-lg-2">
                         <div class="d-flex align-items-center gap-8">
                             <img class="__w-30px" src="{{ asset('public/assets/front-end/img/icons/free-shipping.png') }}" alt="" >
@@ -478,7 +478,7 @@
                             <div class="progress-bar" role="progressbar" style="width: {{ $free_delivery_status['percentage'] }}%" aria-valuenow="{{ $free_delivery_status['percentage'] }}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
-                @endif
+                @endif -->
                 <!-- end of free delivery section -->
             </div>
         @endforeach

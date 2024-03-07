@@ -99,6 +99,7 @@ class CartManager
             $cart_shipping_cost = Cart::where(['cart_group_id'=> $group_id,'product_type'=>'physical'])->sum('shipping_cost');
             $cost = $order_wise_shipping_cost + $cart_shipping_cost;
         }
+        $cost = 69;
         return $cost;
     }
 
