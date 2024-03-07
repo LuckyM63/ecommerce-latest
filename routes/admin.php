@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\offerController;
+// use App\Http\Controllers\Admin\offerController;
 use Doctrine\DBAL\Schema\Index;
 use Illuminate\Support\Facades\Route;
 

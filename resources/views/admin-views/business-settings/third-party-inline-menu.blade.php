@@ -10,8 +10,7 @@
         <li class="{{ Request::is('admin/social-login/view') ?'active':'' }}"><a href="{{route('admin.social-login.view')}}">{{translate('Social_Media_Login')}}</a></li>
         <li class="{{ Request::is('admin/social-media-chat/view') ?'active':'' }}"><a href="{{route('admin.social-media-chat.view')}}">{{translate('Social_Media_Chat')}}</a></li>
         <li class="{{ Request::is('admin/shiprocket/view') ?'active':'' }}"><a href="{{route('admin.shiprocket.view')}}">{{translate('ShipRocket_Config')}}</a></li>
-
-        <li class="{{ Request::is('admin/shiprocket/view') ?'active':'' }}"><a href="{{route('offer')}}">{{translate('Offers')}}</a></li>
+       
 
     </ul>
 </div>
