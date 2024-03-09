@@ -2,7 +2,7 @@
 
 @extends('layouts.back-end.app')
 
-@section('title', translate('Shiprocket Configuration'))
+@section('title', translate('showoffer'))
 
 @push('css_or_js')
 <!-- Add any CSS or JS files if needed -->
@@ -23,24 +23,19 @@
     @include('admin-views.business-settings.third-party-inline-menu')
     <!-- End Inlile Menu -->
 
-    <!-- Your Shiprocket Configuration Form Goes Here -->
+    <!-- Your showoffer Form Goes Here -->
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('admin.shiprocket.update') }}" method="post">
+            <form action="{{ route('admin.showoffer.update') }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="user_id">{{ translate('User ID') }}</label>
-                            <input type="text" class="form-control" id="user_id" name="user_id" value="{{ $shiprocket['user_id'] ?? '' }}">
+                            <label for="offer_id">{{ translate('offer ID') }}</label>
+                            <input type="text" class="form-control" id="offer_id" name="offer_id" value="">
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="password">{{ translate('Password') }}</label>
-                            <input type="text" class="form-control" id="password" name="password" value="{{ $shiprocket['password'] ?? '' }}">
-                        </div>
-                    </div>
+                   
                 </div>
 
                 <div class="form-group">

@@ -178,6 +178,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::post('login', 'ShipRocketController@login')->name('login');
             Route::get('dashboard', 'ShipRocketController@index')->name('index');
         });
+
+        Route::group(['prefix' => 'offershow', 'as' => 'offershow.'], function () {
+            Route::post('login', 'offerController@login')->name('login');
+            Route::get('dashboard', 'offerController@index')->name('index');
+        });
         // Route::get('offer',Offer)
 
         Route::group(['prefix' => 'social-login', 'as' => 'social-login.', 'middleware' => ['module:system_settings']], function () {
@@ -196,6 +201,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::get('view', 'BusinessSettingsController@view_shiprocket')->name('view');
             Route::post('update', 'BusinessSettingsController@update_shiprocket')->name('update');
         });
+        Route::group(['prefix' => 'showoffer', 'as' => 'showoffer.', 'middleware' => ['module:system_settings']], function () {
+            Route::get('view', "BusinessSettingsController@view_showoffer")->name('view');
+            Route::post('update', 'BusinessSettingsController@update_showoffer')->name('update');
+        });
+
+       
+    
 
         Route::get('offer',[offerController::class, 'index']);
 

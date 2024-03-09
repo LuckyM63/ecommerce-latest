@@ -6861,4 +6861,8 @@
   'FAQ_Update_successfully' => 'FAQ Update successfully',
   'employee' => 'Employee',
   'too_many_attempts._please_try_again_after_' => 'Too many attempts. please try again after ',
+  'offershow' => 'Offershow',
+  'showoffer' => 'Showoffer',
+  'offer ID' => 'Offer ID',
+  'offer_update_successfully' => 'Offer update successfully',
 );

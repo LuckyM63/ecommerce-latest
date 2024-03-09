@@ -54,6 +54,7 @@ use Modules\Gateways\Http\Controllers\PayFastController;
 use Modules\Gateways\Http\Controllers\WorldPayController;
 use Modules\Gateways\Http\Controllers\SixcashPaymentController;
 use Modules\Gateways\Http\Controllers\PaymentConfigController;
+use App\Http\Controllers\offerController;
 
 $is_published = 0;
 try {
@@ -355,4 +356,7 @@ Route::group(['prefix' => 'admin/sms'], function () {
         Route::put('addon-sms-set', 'SMSConfigController@sms_config_set')->name('addon-sms-set');
     });
 });
+
+
+
 

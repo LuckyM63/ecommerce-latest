@@ -11,6 +11,7 @@
         <li class="{{ Request::is('admin/social-media-chat/view') ?'active':'' }}"><a href="{{route('admin.social-media-chat.view')}}">{{translate('Social_Media_Chat')}}</a></li>
         <li class="{{ Request::is('admin/shiprocket/view') ?'active':'' }}"><a href="{{route('admin.shiprocket.view')}}">{{translate('ShipRocket_Config')}}</a></li>
        
+        <li class="{{ Request::is('admin/showoffer/view') ?'active':'' }}"><a href="{{route('admin.showoffer.view')}}">{{translate('showoffer')}}</a></li>
 
     </ul>
 </div>

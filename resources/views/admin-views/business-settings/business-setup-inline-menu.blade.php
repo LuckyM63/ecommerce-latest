@@ -9,5 +9,8 @@
         <li class="{{ Request::is('admin/business-settings/delivery-man-settings') ?'active':'' }}"><a href="{{route('admin.business-settings.delivery-man-settings.index')}}">{{translate('delivery_Man')}}</a></li>
         <li class="{{ Request::is('admin/business-settings/shipping-method/setting') ?'active':'' }}"><a href="{{route('admin.business-settings.shipping-method.setting')}}">{{translate('shipping_Method')}}</a></li>
         <li class="{{ Request::is('admin/business-settings/delivery-restriction') ? 'active':'' }}"><a href="{{ route('admin.business-settings.delivery-restriction.index') }}">{{translate('delivery_Restriction')}}</a></li>
+
+        <li class="{{ Request::is('admin/business-settings/showoffer-method/setting') ?'active':'' }}"><a href="{{route('admin.business-settings.showoffer-method.setting')}}">{{translate('offershow_Method')}}</a></li>
+        
     </ul>
 </div>

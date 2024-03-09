@@ -6,6 +6,7 @@ use App\CPU\Helpers;
 use App\CPU\ImageManager;
 use App\Http\Controllers\Controller;
 use App\Model\BusinessSetting;
+use App\Model\Offer;
 use App\Model\Currency;
 use App\Model\SocialMedia;
 use Brian2694\Toastr\Facades\Toastr;
@@ -16,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use phpseclib3\Crypt\RSA\Formats\Keys\JWK;
 use Carbon\Carbon;
+// use App\Model\Offer;
 
 class BusinessSettingsController extends Controller
 {
@@ -1179,6 +1181,15 @@ class BusinessSettingsController extends Controller
     return view('admin-views.business-settings.ship-rocket-config.view', compact('shiprocket'));
 }
 
+
+public function view_showoffer()
+{
+    $showoffer = json_decode(DB::table('business_settings')->where('type', 'showoffer')->value('value'), true);
+
+    return view('admin-views.business-settings.showoffer.view', compact('showoffer'));
+}
+
+
     public function update_shiprocket(Request $request)
     {
         // Validate Shiprocket settings if needed
@@ -1197,4 +1208,28 @@ class BusinessSettingsController extends Controller
         return redirect()->back();
     }
 
+
+    public function update_showoffer(Request $request)
+    {
+        // Validate the request data if needed
+    
+        // Create a new Offer instance and fill it with the request data
+        $offer = new Offer();
+        $offer->offer_id = $request['offer_id']; // Assuming 'offer_id' is the field name from the form
+        $offer->status = 1; // Assuming the status is always enabled (1)
+        $offer->save(); // Save the offer to the database
+    
+        Toastr::success(translate('offer_update_successfully'));
+        return redirect()->back();
+    }
+
 }
+
+   
+
+
+ 
+
+
+
+
