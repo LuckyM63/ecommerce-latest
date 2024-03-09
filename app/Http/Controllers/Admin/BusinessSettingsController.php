@@ -1178,15 +1178,18 @@ class BusinessSettingsController extends Controller
 {
     $shiprocket = json_decode(DB::table('business_settings')->where('type', 'shiprocket')->value('value'), true);
 
+    
     return view('admin-views.business-settings.ship-rocket-config.view', compact('shiprocket'));
 }
 
 
 public function view_showoffer()
 {
-    $showoffer = json_decode(DB::table('business_settings')->where('type', 'showoffer')->value('value'), true);
-
-    return view('admin-views.business-settings.showoffer.view', compact('showoffer'));
+    // $shiprocket = json_decode(DB::table('offers')->where('type', 'shiprocket')->value('value'), true);
+    // dump($showoffer);
+    $offersData = DB::table('offers')->get();
+    // dd($offersData);
+    return view('admin-views.business-settings.showoffer.view', compact('offersData'));
 }
 
 
@@ -1221,6 +1224,22 @@ public function view_showoffer()
     
         Toastr::success(translate('offer_update_successfully'));
         return redirect()->back();
+    }
+
+    public function update_status(Request $request)
+    {
+           // Find the offer by its ID
+    $offer = Offer::findOrFail($id);
+    dd($offer);
+
+    // Toggle the status between 1 and 0
+    $offer->status = $offer->status == 1 ? 0 : 1;
+    
+    // Save the changes
+    $offer->save();
+
+    return response()->json(['message' => 'Status updated successfully'], 200);
+
     }
 
 }

@@ -6865,4 +6865,6 @@
   'showoffer' => 'Showoffer',
   'offer ID' => 'Offer ID',
   'offer_update_successfully' => 'Offer update successfully',
+  'OfferId' => 'OfferId',
+  'toggle' => 'Toggle',
 );

@@ -203,11 +203,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
         });
         Route::group(['prefix' => 'showoffer', 'as' => 'showoffer.', 'middleware' => ['module:system_settings']], function () {
             Route::get('view', "BusinessSettingsController@view_showoffer")->name('view');
-            Route::post('update', 'BusinessSettingsController@update_showoffer')->name('update');
+            Route::post('Addoffer', 'BusinessSettingsController@update_showoffer')->name('Add');
+           Route::patch('update/{id}','BusinessSettingsController@updateStatus')->name('updateOffer');
+           Route::delete('delete/{id}','BusinessSettingsController@deleteOffer')->name('deleteOffer');
         });
 
-       
-    
+
+     
 
         Route::get('offer',[offerController::class, 'index']);
 
