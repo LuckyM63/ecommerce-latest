@@ -6867,4 +6867,12 @@
   'offer_update_successfully' => 'Offer update successfully',
   'OfferId' => 'OfferId',
   'toggle' => 'Toggle',
+  'Want_to_Turn_ON_Status' => 'Want to Turn ON Status',
+  'Want_to_Turn_OFF_Status' => 'Want to Turn OFF Status',
+  'if_enabled_this_status_will_be_available_throughout_the_entire_system' => 'If enabled this status will be available throughout the entire system',
+  'if_disabled_this_status_will_be_hidden_from_the_entire_system' => 'If disabled this status will be hidden from the entire system',
+  'want_to_delete_this_offer' => 'Want to delete this offer',
+  'offers has been successfully discarded' => 'Offers has been successfully discarded',
+  'status_update_successfully' => 'Status update successfully',
+  'choose shipping option' => 'Choose shipping option',
 );

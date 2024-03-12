@@ -512,15 +512,15 @@
                         <div class="row">
                             <div class="col-12">
                                 <!-- Made it default -->
-                                <!-- <select class="form-control border-aliceblue" onchange="set_shipping_id(this.value,'all_cart_group')"> -->           
-                                    <option>{{translate('')}}</option>
+                                 <select class="form-control border-aliceblue" onchange="set_shipping_id(this.value,'all_cart_group')">         
+                                    <option>{{translate('choose shipping option')}}</option>
                                     @foreach($shippings as $shipping)
                                         <option
                                             value="{{$shipping['id']}}" {{$choosen_shipping['shipping_method_id']==$shipping['id']?'selected':''}}>
                                             {{translate('shipping_method')}} : {{$shipping['title'].' ( '.$shipping['duration'].' ) '.\App\CPU\Helpers::currency_converter($shipping['cost'])}}
                                         </option>
                                     @endforeach
-                                <!-- </select> -->
+                                </select>
                             </div>
                         </div>
                     </div>

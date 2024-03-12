@@ -1226,21 +1226,67 @@ public function view_showoffer()
         return redirect()->back();
     }
 
-    public function update_status(Request $request)
-    {
-           // Find the offer by its ID
-    $offer = Offer::findOrFail($id);
-    dd($offer);
+    // public function update_status(Request $request)
+    // {
+    //        // Find the offer by its ID
+    // $offer = Offer::findOrFail($id);
+    // // dd($offer);
 
-    // Toggle the status between 1 and 0
-    $offer->status = $offer->status == 1 ? 0 : 1;
+    // // Toggle the status between 1 and 0
+    // $offer->status = $offer->status == 1 ? 0 : 1;
     
-    // Save the changes
-    $offer->save();
+    // // Save the changes
+    // $offer->save();
 
-    return response()->json(['message' => 'Status updated successfully'], 200);
+    // return response()->json(['message' => 'Status updated successfully'], 200);
+
+    // }
+
+
+    public function updateStatus($id, Request $request)
+    {
+        // Validate Shiprocket settings if needed
+    
+        $offer = DB::table('offers')->where('id', $id)->first();
+    
+        if (!$offer) {
+            Toastr::error(translate('Offer not found'));
+            return redirect()->back();
+        }
+    
+        $newStatus = $offer->status == 1 ? 0 : 1;
+    
+        DB::table('offers')->where('id', $id)->update([
+            'status' => $newStatus
+        ]);
+    
+        Toastr::success(translate('Status updated successfully'));
+        return redirect()->back();
+    }
+    
+
+
+    public function deleteOffer($id , Request $request){
+      $deletofferid =  DB::table('offers')->where('id', $id)->first();
+
+
+
+      if(!$deletofferid){
+          $request->session()->flash('error','record not found');
+          return redirect()->back();
+
+      }
+        
+    //   $deletofferid =  DB::table('offers')->where('id', $id)->first();
+      $request->session()->flash('success','record found');
+     
+      DB::table('offers')->where('id', $id)->delete();
+
+        Toastr::success(translate('offers has been successfully discarded'));
+        return redirect()->back();
 
     }
+
 
 }
 

@@ -24,14 +24,28 @@ class showofferController extends Controller
         return view("admin-views.business-settings.showoffer.view",compact('showoffers'));
     }
 
+    
+    
     public function updateStatus($id){
 
+             
+        $showid = offer::find($id);
 
+        if($showid){
+            if($showid->status){
+                $showid->status= 0;
+            }else{
 
+                $showid->status=1;
+            }
 
+           
+        }
+
+        $showid->save();
+                // return back();
         return view("admin-views.business-settings.showoffer.view",compact('showoffers'));
     }
-    
 
     public function addOffer(Request $request){
 
@@ -47,7 +61,10 @@ class showofferController extends Controller
  
          return redirect()->route('admin.showoffer');
      }
-     public function deleteOffer(){
+     public function deleteOffer($id){
+        $deletid = offer::find($id);
+
+        $deletid = save();
         return view("admin-views.business-settings.showoffer.view",compact('showoffers'));
     }
  

@@ -67,18 +67,43 @@
                     @foreach ($offersData as $offerItem)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $offerItem->id }}</td>
+                            <td>{{ $offerItem->offer_id }}</td>
                             <td>
                                 <form action="{{route('admin.showoffer.updateOffer',['id' => $offerItem->id])}}" method="POST" class="customer_status_form">
                                     @csrf
-                                    @method('PATCH')
-                                    <input type="hidden" name="id" value="{{$offerItem->id}}">
+                                    @method('patch')
+                                    {{-- <input type="hidden" name="id" value="{{$offerItem->id}}">
                                     <label class="switcher mx-auto">
-                                        <input type="checkbox" class="switcher_input"  name="status" {{ $offerItem->status == 1 ? 'checked':'' }} 
-                                        onclick="toogleStatusModal(event,'status{{$offerItem->id}}'">
+                                        <input type="checkbox" class="switcher_input"  name="status" class="toggle-switch-input" {{ $offerItem->status == 1 ? 'checked':'' }} 
+                                        id="status{{$offerItem->id}}" onclick="toogleStatusModal('{{$offerItem->status}}','status{{$offerItem->id}}','status-on.png','status-off.png','{{translate('Want_to_Turn_ON_Status')}}','{{translate('Want_to_Turn_OFF_Status')}}',`<p>{{translate('if_enabled_this_status_will_be_available_throughout_the_entire_system')}}</p>`,`<p>{{translate('if_disabled_this_status_will_be_hidden_from_the_entire_system')}}</p>`)">
                                         <span class="switcher_control"></span>
-                                    </label>
+                                    </label>  --}}
+
+                                    <a href="{{route('admin.showoffer.updateOffer',['id' => $offerItem->id])}}" class="btn btn-sm btn-{{$offerItem->status?'success':'danger'}}"> 
+                                        {{$offerItem->status?'enable':'disable'}}</a>
                                 </form>
+                            </td>
+
+                            <td>
+                                <div class="d-flex justify-content-center gap-2">
+
+                              
+
+                                </div>
+                                <form action="{{route('admin.showoffer.deleteOffer',['id' => $offerItem->id])}}"
+                                    method="POST" >
+                                @csrf
+                                @method('delete')
+                                <a href="{{route('admin.showoffer.deleteOffer',['id' => $offerItem->id])}}"title="{{translate('delete')}}"
+                                    class="btn btn-outline-danger btn-sm delete square-btn" href="javascript:"
+                                    onclick="form_alert('Offerr-{{$offerItem->id}}','{{translate('want_to_delete_this_offer').'?'}}')">
+                                    <i class="tio-delete"></i>
+                                </a>
+
+                                
+
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach
@@ -91,6 +116,8 @@
 
 
     </div>
+  
+
 
 @endsection
 

@@ -70642,4 +70642,6 @@ module.exports = __webpack_require__(/*! /opt/lampp/htdocs/ecommerce/resources/s
 
 /***/ })
 
-/******/ });
+/******/ })
+
+
