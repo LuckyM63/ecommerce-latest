@@ -64,6 +64,8 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    
                     @foreach ($offersData as $offerItem)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>

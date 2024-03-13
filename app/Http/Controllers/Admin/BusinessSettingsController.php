@@ -1185,9 +1185,10 @@ class BusinessSettingsController extends Controller
 
 public function view_showoffer()
 {
-    // $shiprocket = json_decode(DB::table('offers')->where('type', 'shiprocket')->value('value'), true);
-    // dump($showoffer);
-    $offersData = DB::table('offers')->get();
+   
+    
+  
+    $offersData =Offer::all()->sortByDesc('created_at');
     // dd($offersData);
     return view('admin-views.business-settings.showoffer.view', compact('offersData'));
 }
@@ -1221,7 +1222,7 @@ public function view_showoffer()
         $offer->offer_id = $request['offer_id']; // Assuming 'offer_id' is the field name from the form
         $offer->status = 1; // Assuming the status is always enabled (1)
         $offer->save(); // Save the offer to the database
-    
+        
         Toastr::success(translate('offer_update_successfully'));
         return redirect()->back();
     }

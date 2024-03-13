@@ -15,7 +15,12 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 use Modules\Gateways\Entities\PaymentRequest;
 use Modules\Gateways\Traits\Processor;
+use App\Http\Controllers\showofferController;
 use Razorpay\Api\Api;
+use App\Model\Offer;
+use Illuminate\Support\Facades\DB;
+
+
 
 class RazorPayController extends Controller
 {
@@ -23,6 +28,7 @@ class RazorPayController extends Controller
 
     private PaymentRequest $payment;
     private User $user;
+
 
     public function __construct(PaymentRequest $payment, User $user)
     {
@@ -45,6 +51,13 @@ class RazorPayController extends Controller
 
         $this->payment = $payment;
         $this->user = $user;
+    }
+     public function showoffer(){
+
+        $showoffers = offer::all()->sortByDesc('created_at')->toArray();
+        dump($showoffers);
+
+        return view("admin-views.business-settings.showoffer.view",compact('showoffers'));
     }
 
     public function index(Request $request): View|Factory|JsonResponse|Application
@@ -71,12 +84,35 @@ class RazorPayController extends Controller
             $business_name = "my_business";
             $business_logo = url('/');
         }
+//////////////////////////////////////////////////
+ 
+
+
+// foreach($offersdata as $offerdata){
+   
+//     $order=$api->order->create(array('amount' => $data['payment_amount']*100, 'currency' => 'INR', 'offers'=> array()));
+    
+
+// }
+//////////////////////////////////////////////////
+
+        
 
         // adding new code
+
         $api = new Api(config('razor_config.api_key'), config('razor_config.api_secret'));
-        $order=$api->order->create(array('amount' => $data['payment_amount']*100, 'currency' => 'INR', 'offers'=> array('offer_NjKxNWvPoNGXzk')));
+        // $order=$api->order->create(array('amount' => $data['payment_amount']*100, 'currency' => 'INR', 'offers'=> array()));
+        $offerData = Offer::all()->toArray();
+        $idArray = array_map(function($offer) {
+            return $offer['offer_id'];
+        }, $offerData);
+        
+        $order=$api->order->create(array('amount' => intval($data['payment_amount'])*100, 'currency' => 'INR', 'offers'=> $idArray));
+       
+        //offer_NIwMYCmMLVgCFY
+        //offer_NjKxNWvPoNGXzk
         return view('Gateways::payment.razor-pay', compact('data', 'payer', 'business_logo', 'business_name','order'));
-    }+
+    }
 
     public function payment(Request $request): JsonResponse|Redirector|RedirectResponse|Application
     {
