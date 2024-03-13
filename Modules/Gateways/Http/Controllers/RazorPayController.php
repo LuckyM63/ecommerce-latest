@@ -102,13 +102,13 @@ class RazorPayController extends Controller
 
         $api = new Api(config('razor_config.api_key'), config('razor_config.api_secret'));
         // $order=$api->order->create(array('amount' => $data['payment_amount']*100, 'currency' => 'INR', 'offers'=> array()));
-        $offerData = Offer::all()->toArray();
+        $offerData = Offer::where('status',1)->get()->toArray();
         $idArray = array_map(function($offer) {
             return $offer['offer_id'];
         }, $offerData);
-        
+        // dd($offerData);
         $order=$api->order->create(array('amount' => intval($data['payment_amount'])*100, 'currency' => 'INR', 'offers'=> $idArray));
-       
+         
         //offer_NIwMYCmMLVgCFY
         //offer_NjKxNWvPoNGXzk
         return view('Gateways::payment.razor-pay', compact('data', 'payer', 'business_logo', 'business_name','order'));
