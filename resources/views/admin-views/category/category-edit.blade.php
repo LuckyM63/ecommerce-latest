@@ -2,6 +2,8 @@
 
 @section('title', translate('category'))
 
+
+
 @section('content')
     <div class="content container-fluid">
         <!-- Page Title -->
