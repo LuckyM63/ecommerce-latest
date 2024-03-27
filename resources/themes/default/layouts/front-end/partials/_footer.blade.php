@@ -238,6 +238,37 @@
                                             </a>
 
                                         </div>
+
+                                        <div class="payment-methods">
+                                            <h4 class="text-lg font-semibold mb-2" style="color: white;">Payment Methods</h4>
+                                            <ul class="grid grid-cols-4 gap-4" style="padding: 0; list-style: none;">
+                                                <li style="display: inline-block; margin-right: 10px;"><img
+                                                        src="{{ asset('resources\themes\theme_aster\public\assets\img\payment\download.png') }}"
+                                                        style="width: 80px; height: 80px; object-fit: contain; border-radius: 8px;">
+                                                </li>
+                                                <li style="display: inline-block; margin-right: 10px;"><img
+                                                        src="{{ asset('resources\themes\theme_aster\public\assets\img\payment\mastercard.png') }}"
+                                                        style="width: 80px; height: 80px; object-fit: contain; border-radius: 8px;">
+                                                </li>
+                                                <li style="display: inline-block; margin-right: 10px;"><img
+                                                        src="{{ asset('resources\themes\theme_aster\public\assets\img\payment\rupay.png') }}"
+                                                        style="width: 80px; height: 80px; object-fit: contain; border-radius: 8px;">
+                                                </li>
+                                                <li style="display: inline-block; margin-right: 10px;"><img
+                                                        src="{{ asset('resources\themes\theme_aster\public\assets\img\payment\razor-pay.jpeg') }}"
+                                                        style="width: 80px; height: 80px; object-fit: contain; border-radius: 8px;">
+                                                </li>
+                                                <li style="display: inline-block; margin-right: 10px;"><img
+                                                        src="{{ asset('resources\themes\theme_aster\public\assets\img\payment\upi.png') }}"
+                                                        style="width: 80px; height: 80px; object-fit: contain; border-radius: 8px;">
+                                                </li>
+                                                <li style="display: inline-block; margin-right: 10px;"><img
+                                                        src="{{ asset('resources\themes\theme_aster\public\assets\img\payment\netbanking2.png') }}"
+                                                        style="width: 80px; height: 80px; object-fit: contain; border-radius: 8px;">
+                                                </li>
+                                            </ul>
+                                        </div>
+            
                                         <div>
                                             <a class="widget-list-link" href="mailto: {{\App\CPU\Helpers::get_business_settings('company_email')}}">
                                                 <span ><i class="fa fa-envelope m-2"></i> {{\App\CPU\Helpers::get_business_settings('company_email')}} </span>

@@ -6,6 +6,7 @@
 <div class="row g-3 mx-max-md-0">
     <!-- List of items-->
     <section class="col-lg-8 px-max-md-0">
+        <h1>rudhra</h1>
         @if(count($cart)==0)
             @php($physical_product = false)
         @endif

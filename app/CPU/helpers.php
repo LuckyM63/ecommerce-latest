@@ -1245,6 +1245,7 @@ if (!function_exists('get_shop_name')) {
 }
 
 if (!function_exists('hex_to_rgb')) {
+    
     function hex_to_rgb($hex)
     {
         $result = preg_match('/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i', $hex, $matches);

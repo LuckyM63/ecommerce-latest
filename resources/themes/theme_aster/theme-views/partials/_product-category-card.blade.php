@@ -17,6 +17,7 @@
                         {{\App\CPU\Helpers::currency_converter($product->discount)}}
                     @endif
                 </span>
+                <h1>rudhra</h1>
             @else
             @endif
             <span class="store-product__action preventDefault" onclick="quickView('{{$product->id}}', '{{route('quick-view')}}')">

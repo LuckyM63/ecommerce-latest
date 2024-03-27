@@ -25,7 +25,20 @@ class ProductListController extends Controller
     public function products(Request $request)
     {
         $theme_name = theme_root_path();
+        
+        return match ($theme_name){
+            'default' => self::default_theme($request),
+            'theme_aster' => self::theme_aster($request),
+            'theme_fashion' => self::theme_fashion($request),
+            'theme_all_purpose' => self::theme_all_purpose($request),
+        };
+    }
 
+    public function productsPost(Request $request)
+    {
+        // dd($request);
+        $theme_name = theme_root_path();
+        
         return match ($theme_name){
             'default' => self::default_theme($request),
             'theme_aster' => self::theme_aster($request),
@@ -35,6 +48,7 @@ class ProductListController extends Controller
     }
 
     public function default_theme($request){
+        // dd($request);
         $request['sort_by'] == null ? $request['sort_by'] == 'latest' : $request['sort_by'];
 
         $porduct_data = Product::active()->with(['reviews']);
@@ -167,6 +181,8 @@ class ProductListController extends Controller
             'min_price' => $request['min_price'],
             'max_price' => $request['max_price'],
         ];
+
+        // dd($data);
 
         $products = $fetched->paginate(20)->appends($data);
 

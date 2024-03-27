@@ -388,10 +388,22 @@
             });
         }
 
-        $('#searchByFilterValue, #searchByFilterValue-m').change(function () {
+        $('#searchByFilterValue, #searchByFilterValue-m').change(async function () {
             var url = $(this).val();
+            console.log(url);
+            console.log(document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+            let resp = await fetch('/products', {
+                method: 'Post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add any additional headers as needed
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+            });
+            let response = await resp.json();
+            console.log(response);
             if (url) {
-                window.location = url;
+                // window.location = url;
             }
             return false;
         });

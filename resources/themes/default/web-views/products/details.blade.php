@@ -1,5 +1,4 @@
 @extends('layouts.front-end.app')
-
 @section('title', $product['name'])
 
 @push('css_or_js')
@@ -126,6 +125,15 @@
 @endpush
 
 @section('content')
+
+
+@php
+    $ec = json_encode($category_info);
+    $ec = str_replace(['"', "'"], '', $ec);
+    
+@endphp
+<a href="{{route('home')}}">Home ></a>
+<a href="">{{$ec}}</a>
     <div class="__inline-23">
         <!-- Page Content-->
         <div class="container mt-4 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">

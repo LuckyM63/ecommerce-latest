@@ -68,6 +68,13 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
     Route::get('categories', 'WebController@all_categories')->name('categories');
     Route::get('category-ajax/{id}', 'WebController@categories_by_category')->name('category-ajax');
 
+    //breadcrumps
+
+    // $caturls=ModelCategory::select('url')->where('status',1)->get()->pluck('url');
+
+    // dd($caturls);
+    
+
     Route::get('brands', 'WebController@all_brands')->name('brands');
     Route::get('sellers', 'WebController@all_sellers')->name('sellers');
     Route::get('seller-profile/{id}', 'WebController@seller_profile')->name('seller-profile');
@@ -86,6 +93,7 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
 
     Route::get('/product/{slug}', 'ProductDetailsController@product')->name('product');
     Route::get('products', 'ProductListController@products')->name('products');
+    Route::post('products', 'ProductListController@productsPost')->name('productsPost');
     Route::post('ajax-filter-products', 'ShopViewController@ajax_filter_products')->name('ajax-filter-products'); // Theme fashion, ALl purpose
     Route::get('orderDetails', 'WebController@orderdetails')->name('orderdetails');
     Route::get('discounted-products', 'WebController@discounted_products')->name('discounted-products');

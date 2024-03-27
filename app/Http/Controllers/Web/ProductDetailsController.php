@@ -6,6 +6,7 @@ use App\CPU\Helpers;
 use App\CPU\ProductManager;
 use App\Http\Controllers\Controller;
 use App\Model\DealOfTheDay;
+use App\Model\Category;
 use App\Model\OrderDetail;
 use App\Model\Product;
 use App\Model\Review;
@@ -42,6 +43,11 @@ class ProductDetailsController extends Controller
 
     public function default_theme($slug){
         $product = Product::active()->with(['reviews','seller.shop'])->where('slug', $slug)->first();
+        $category_id= json_decode($product->category_ids)[0]->id;
+        $category_info=Category::all()->where('id',$category_id)->first()->name;
+        // dd($category_info);
+        
+        // dd($data);
         if ($product != null) {
             $overallRating = ProductManager::get_overall_rating($product->reviews);
             $wishlist_status = Wishlist::where(['product_id'=>$product->id, 'customer_id'=>auth('customer')->id()])->count();
@@ -79,7 +85,7 @@ class ProductDetailsController extends Controller
             return view(VIEW_FILE_NAMES['products_details'], compact('product', 'countWishlist', 'countOrder', 'relatedProducts',
                 'deal_of_the_day', 'current_date', 'seller_vacation_start_date', 'seller_vacation_end_date', 'seller_temporary_close',
                 'inhouse_vacation_start_date', 'inhouse_vacation_end_date', 'inhouse_vacation_status', 'inhouse_temporary_close','overallRating',
-                'wishlist_status','reviews_of_product','rating','total_reviews','products_for_review','more_product_from_seller','decimal_point_settings'));
+                'wishlist_status','reviews_of_product','rating','total_reviews','products_for_review','more_product_from_seller','decimal_point_settings','category_info'));
         }
 
         Toastr::error(translate('not_found'));

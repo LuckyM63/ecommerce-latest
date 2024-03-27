@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-develop',
-        'version' => 'dev-develop',
-        'reference' => 'b0005064ec0c5b52d9a85d17b637de8c386bde0a',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '0baa8bd255a9f1d42a2eb7a70ac1bbbddc7e60de',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -145,6 +145,15 @@
             'reference' => 'f41715465d65213d644d3141a6a93081be5d3549',
             'type' => 'library',
             'install_path' => __DIR__ . '/../dflydev/dot-access-data',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'diglactic/laravel-breadcrumbs' => array(
+            'pretty_version' => 'v9.0.0',
+            'version' => '9.0.0.0',
+            'reference' => '88e8f01e013e811215770e27b40a74014c28f2c4',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../diglactic/laravel-breadcrumbs',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -299,7 +308,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../facade/ignition-contracts',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'fakerphp/faker' => array(
             'pretty_version' => 'v1.23.0',
@@ -638,9 +647,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-develop',
-            'version' => 'dev-develop',
-            'reference' => 'b0005064ec0c5b52d9a85d17b637de8c386bde0a',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '0baa8bd255a9f1d42a2eb7a70ac1bbbddc7e60de',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1347,8 +1356,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(

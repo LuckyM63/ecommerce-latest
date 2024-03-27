@@ -122,7 +122,7 @@
                                                     </li>
                                                 @endforeach
                                             @endif
-                                        </ul>
+                                        </ul> 
                                     </div>
                                 </div>
 
