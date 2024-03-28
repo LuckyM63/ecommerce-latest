@@ -133,14 +133,23 @@
     
     
 @endphp
-<a href="{{route('home')}}">Home ></a>
-<a href="{{route('productPost')}}">{{$ec}} ></a> 
-@if ($product->sub_category)
-<a href="http://localhost/ecommerce/products?id=46&data_from=category&page=1">
-    {{ $product->sub_category->name }} >
-</a>
-@endif
-{{ $product->name }} 
+
+        <a href="{{ route('home') }}" style="padding: 5px; font-weight: bold; font-size: 16px;">Home ></a>
+        
+        <a href="{{ route('productPost') }}" style="padding: 5px; font-weight: bold; font-size: 16px;">
+            {{ $ec }} >
+        </a>
+
+        @if ($product->sub_category)
+        <a href="http://localhost/ecommerce/products?id=46&data_from=category&page=1" style="padding: 5px; font-weight: bold; font-size: 16px;">
+            {{ $product->sub_category->name }} > 
+        </a>
+        <a href="http://localhost/ecommerce/products?id=47&data_from=category&page=1" style="padding: 5px; font-weight: bold; font-size: 16px;">{{$product->sub_sub_category->name}}></a>
+        @endif
+        
+        <span style="padding: 5px; font-weight: bold; font-size: 16px;">{{ $product->name }}</span>
+
+
     <div class="__inline-23">
         <!-- Page Content-->
         <div class="container mt-4 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">

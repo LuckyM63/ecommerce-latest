@@ -6875,4 +6875,5 @@
   'offers has been successfully discarded' => 'Offers has been successfully discarded',
   'status_update_successfully' => 'Status update successfully',
   'choose shipping option' => 'Choose shipping option',
+  'Sub_Sub_Category_updated_successfully' => 'Sub Sub Category updated successfully',
 );
