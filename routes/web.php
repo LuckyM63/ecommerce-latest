@@ -93,7 +93,7 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode','guestCheck
 
     Route::get('/product/{slug}', 'ProductDetailsController@product')->name('product');
     Route::get('products', 'ProductListController@products')->name('products');
-    Route::post('products', 'ProductListController@productsPost')->name('productsPost');
+    Route::post('products', 'ProductListController@productsPost')->name('productPost');
     Route::post('ajax-filter-products', 'ShopViewController@ajax_filter_products')->name('ajax-filter-products'); // Theme fashion, ALl purpose
     Route::get('orderDetails', 'WebController@orderdetails')->name('orderdetails');
     Route::get('discounted-products', 'WebController@discounted_products')->name('discounted-products');

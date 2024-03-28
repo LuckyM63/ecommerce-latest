@@ -76,6 +76,7 @@ class SubCategoryController extends Controller
     {
         $data = Category::where('id', $request->id)->first();
 
+
         return response()->json($data);
     }
 

@@ -131,9 +131,16 @@
     $ec = json_encode($category_info);
     $ec = str_replace(['"', "'"], '', $ec);
     
+    
 @endphp
 <a href="{{route('home')}}">Home ></a>
-<a href="">{{$ec}}</a>
+<a href="{{route('productPost')}}">{{$ec}} ></a> 
+@if ($product->sub_category)
+<a href="http://localhost/ecommerce/products?id=46&data_from=category&page=1">
+    {{ $product->sub_category->name }} >
+</a>
+@endif
+{{ $product->name }} 
     <div class="__inline-23">
         <!-- Page Content-->
         <div class="container mt-4 rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
