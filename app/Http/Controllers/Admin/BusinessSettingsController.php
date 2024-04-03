@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use phpseclib3\Crypt\RSA\Formats\Keys\JWK;
 use Carbon\Carbon;
+use App\Models\categoryseo;
 // use App\Model\Offer;
 
 class BusinessSettingsController extends Controller
@@ -1176,24 +1177,22 @@ class BusinessSettingsController extends Controller
 
     public function view_shiprocket()
 {
-    $shiprocket = json_decode(DB::table('business_settings')->where('type', 'shiprocket')->value('value'), true);
-
-    
+    $shiprocket = json_decode(DB::table('business_settings')->where('type', 'shiprocket')->value('value'), true);    
     return view('admin-views.business-settings.ship-rocket-config.view', compact('shiprocket'));
 }
 
-
 public function view_showoffer()
 {
-   
-    
-  
     $offersData =Offer::all()->sortByDesc('created_at');
     // dd($offersData);
     return view('admin-views.business-settings.showoffer.view', compact('offersData'));
 }
-
-
+public function view_categoryseo()
+{
+    $Data =categoryseo::all()->sortByDesc('created_at');
+    // dd($offersData);
+    return view('admin-views.business-settings.categoryseo.view', compact('Data'));
+}
     public function update_shiprocket(Request $request)
     {
         // Validate Shiprocket settings if needed
@@ -1224,6 +1223,21 @@ public function view_showoffer()
         $offer->save(); // Save the offer to the database
         
         Toastr::success(translate('offer_update_successfully'));
+        return redirect()->back();
+    }
+    public function update_categoryseo(Request $request)
+    {
+        // Validate the request data if needed
+    
+        // Create a new Offer instance and fill it with the request data
+        $offer = new categoryseo();
+        $offer->Category = $request->Category;// Assuming 'offer_id' is the field name from the form
+        // categoryseo::create([
+        //     'Category' => $request->input('category'),
+        // ]);
+        $offer->Content = $request['blog']; // Assuming the status is always enabled (1)
+        $offer->save(); // Save the offer to the database
+        Toastr::success(translate('Content_Added_successfully'));
         return redirect()->back();
     }
 
@@ -1285,10 +1299,7 @@ public function view_showoffer()
 
         Toastr::success(translate('offers has been successfully discarded'));
         return redirect()->back();
-
     }
-
-
 }
 
    

@@ -6876,4 +6876,9 @@
   'status_update_successfully' => 'Status update successfully',
   'choose shipping option' => 'Choose shipping option',
   'Sub_Sub_Category_updated_successfully' => 'Sub Sub Category updated successfully',
+  'categoryseo' => 'Categoryseo',
+  'Content' => 'Content',
+  'Toggle' => 'Toggle',
+  'Content_Added_successfully' => 'Content Added successfully',
+  'Offer not found' => 'Offer not found',
 );

@@ -208,7 +208,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
            Route::get('delete/{id}','BusinessSettingsController@deleteOffer')->name('deleteOffer');
         });
 
-
+        // categoryseo routes
+        Route::group(['prefix' => 'categoryseo', 'as' => 'categoryseo.', 'middleware' => ['module:system_settings']], function () {
+            Route::get('view', "BusinessSettingsController@view_categoryseo")->name('view');
+            Route::post('Addoffer', 'BusinessSettingsController@update_categoryseo')->name('Add');
+           Route::get('update/{id}','BusinessSettingsController@updateStatus')->name('updateOffer');
+           Route::get('delete/{id}','BusinessSettingsController@deleteOffer')->name('deleteOffer');
+           Route::post('/submit-form','BusinessSettingsController@store')->name('submit.form'); 
+        });
      
 
         Route::get('offer',[offerController::class, 'index']);
