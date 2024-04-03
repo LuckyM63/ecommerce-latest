@@ -863,6 +863,8 @@
         </div>
         <!-- end -->
 
+        
+
         @if (count($relatedProducts)>0)
             <div class="container rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                 <div class="card __card border-0">
@@ -897,7 +899,74 @@
                 </div>
             </div>
         @endif
-
+        <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-header">
+                More About My Glamour
+                <span class="arrow-icon">▼</span>
+              </div>
+              <div class="accordion-content">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum qui ullam nam atque, quos maiores nobis laudantium eveniet asperiores perspiciatis quae? Dolorum repudiandae quia eveniet voluptates at fuga, eaque libero.
+              </div>
+            </div>
+          </div>
+          
+          <style>
+            .accordion {
+              border: 1px solid #ccc;
+              margin: 25px;
+              border-radius: 5px;
+            }
+          
+            .accordion-item {
+              border-bottom: 1px solid #ccc;
+              border-radius: 5px;
+            }
+          
+            .accordion-header {
+              background-color: #fff;
+              color: #000;
+              padding: 10px;
+              cursor: pointer;
+              font-size: x-large;
+              font-weight: 700;
+              position: relative;
+            }
+          
+            .arrow-icon {
+              position: absolute;
+              top: 50%;
+              right: 10px;
+              transform: translateY(-50%);
+            }
+          
+            .accordion-content {
+              background-color: #fff;
+              color: #000;
+              display: none;
+              padding: 10px;
+            }
+          
+          </style>
+          
+          <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              const accordionHeaders = document.querySelectorAll('.accordion-header');
+          
+              accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                  const accordionItem = this.parentElement;
+                  const accordionContent = accordionItem.querySelector('.accordion-content');
+          
+                  if (accordionContent.style.display === 'block') {
+                    accordionContent.style.display = 'none';
+                  } else {
+                    accordionContent.style.display = 'block';
+                  }
+                });
+              });
+            });
+          </script>
         <div class="modal fade rtl" id="show-modal-view" tabindex="-1" role="dialog" aria-labelledby="show-modal-image"
             aria-hidden="true" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
             <div class="modal-dialog" role="document">

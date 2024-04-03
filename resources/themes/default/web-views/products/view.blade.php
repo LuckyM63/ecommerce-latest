@@ -322,8 +322,75 @@
             </section>
         </div>
     </div>
-@endsection
+    <div class="accordion">
+        <div class="accordion-item">
+      <div class="accordion-header">
+        More About My Glamour
+        <span class="arrow-icon">▼</span>
+    </div>
+      <div class="accordion-content">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum qui ullam nam atque, quos maiores nobis laudantium eveniet asperiores perspiciatis quae? Dolorum repudiandae quia eveniet voluptates at fuga, eaque libero.
+      </div>
+    </div>
+</div>
 
+<style>
+    .accordion {
+      border: 1px solid #ccc;
+      margin: 25px;
+      border-radius: 5px;
+    }
+  
+    .accordion-item {
+      border-bottom: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+    .accordion-header {
+      background-color: #fff;
+      color: #000;
+      padding: 10px;
+      cursor: pointer;
+      font-size: x-large;
+      font-weight: 700;
+      position: relative;
+    }
+  
+    .arrow-icon {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+    }
+  
+    .accordion-content {
+      background-color: #fff;
+      color: #000;
+      display: none;
+      padding: 10px;
+    }
+  
+  </style>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+      accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const accordionItem = this.parentElement;
+            const accordionContent = accordionItem.querySelector('.accordion-content');
+            
+            if (accordionContent.style.display === 'block') {
+                accordionContent.style.display = 'none';
+            } else {
+                accordionContent.style.display = 'block';
+            }
+        });
+    });
+});
+</script>
+@endsection
 @push('script')
     <script>
         function openNav() {
