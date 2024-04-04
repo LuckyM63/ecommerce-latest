@@ -1232,12 +1232,9 @@ public function view_categoryseo()
         // Create a new Offer instance and fill it with the request data
         $offer = new categoryseo();
         $offer->Category = $request->Category;// Assuming 'offer_id' is the field name from the form
-        $request->validate([
-            'Category'=>['required', 'max:200', 'unique:categoryseos,Category']
-        ],[
-            'name.unique' => 'Category Already exists!'
-        ]);
-         
+        // categoryseo::create([
+        //     'Category' => $request->input('category'),
+        // ]);
         $offer->Content = $request['blog']; // Assuming the status is always enabled (1)
         $offer->save(); // Save the offer to the database
         Toastr::success(translate('Content_Added_successfully'));
@@ -1303,9 +1300,33 @@ public function view_categoryseo()
         Toastr::success(translate('offers has been successfully discarded'));
         return redirect()->back();
     }
-}
+
 
    
+
+
+public function categoryseodelete($id , Request $request){
+    $categoryseoid =  DB::table('Categoryseos')->where('id', $id)->first();
+
+
+
+    if(!$categoryseoid){
+        $request->session()->flash('error','record not found');
+        return redirect()->back();
+
+    }
+      
+  //   $deletofferid =  DB::table('offers')->where('id', $id)->first();
+    $request->session()->flash('success','record found');
+   
+    DB::table('Categoryseos')->where('id', $id)->delete();
+
+      Toastr::success(translate('category has been successfully deleted'));
+      return redirect()->back();
+  }
+
+}
+
 
 
  

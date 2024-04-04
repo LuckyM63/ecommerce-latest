@@ -6881,4 +6881,6 @@
   'Toggle' => 'Toggle',
   'Content_Added_successfully' => 'Content Added successfully',
   'Offer not found' => 'Offer not found',
+  'category has been successfully deleted' => 'Category has been successfully deleted',
+  'want_to_delete_this_category' => 'Want to delete this category',
 );

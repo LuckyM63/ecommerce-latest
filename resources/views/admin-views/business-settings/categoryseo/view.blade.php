@@ -112,15 +112,15 @@
                             <td>
                                 <div class="d-flex justify-content-center gap-2">
                                 </div>
-                                <form action="{{route('admin.categoryseo.deleteOffer',['id' => $Item->id])}}"
+                                <form action="{{route('admin.categoryseo.categoryseodelete',['id' => $Item->id])}}"
                                     method="POST" >
                                 @csrf
                                 @method('delete')
-                                <a href="{{route('admin.categoryseo.deleteOffer',['id' => $Item->id])}}"title="{{translate('delete')}}"
-                                    class="btn btn-outline-danger btn-sm delete square-btn" href="javascript:"
-                                    onclick="form_alert('Offerr-{{$Item->id}}','{{translate('want_to_delete_this_offer').'?'}}')">
+                                <a href="{{route('admin.categoryseo.categoryseodelete',['id' => $Item->id])}}"title="{{translate('delete')}}"
+                                    class="btn btn-outline-danger btn-sm delete square-btn" href="javascript:"{{-- delete popup(are u sure to delet category) --}}
+{{-- onclick="form_alert('Offerr-{{$Item->id}}','{{translate('want_to_delete_this_category').'?'}}')" --}}>
                                     <i class="tio-delete"></i>
-                                </a>
+                                </a> 
                                 </form>
 
                             </td>

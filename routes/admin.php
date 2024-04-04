@@ -213,7 +213,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::get('view', "BusinessSettingsController@view_categoryseo")->name('view');
             Route::post('Addoffer', 'BusinessSettingsController@update_categoryseo')->name('Add');
            Route::get('update/{id}','BusinessSettingsController@updateStatus')->name('updateOffer');
-           Route::get('delete/{id}','BusinessSettingsController@deleteOffer')->name('deleteOffer');
+           Route::get('delete/{id}','BusinessSettingsController@categoryseodelete')->name('categoryseodelete');
            Route::post('/submit-form','BusinessSettingsController@store')->name('submit.form'); 
         });
      
