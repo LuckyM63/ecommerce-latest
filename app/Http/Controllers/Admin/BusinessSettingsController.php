@@ -1232,9 +1232,12 @@ public function view_categoryseo()
         // Create a new Offer instance and fill it with the request data
         $offer = new categoryseo();
         $offer->Category = $request->Category;// Assuming 'offer_id' is the field name from the form
-        // categoryseo::create([
-        //     'Category' => $request->input('category'),
-        // ]);
+        $request->validate([
+            'Category'=>['required', 'max:200', 'unique:categoryseos,Category']
+        ],[
+            'name.unique' => 'Category Already exists!'
+        ]);
+         
         $offer->Content = $request['blog']; // Assuming the status is always enabled (1)
         $offer->save(); // Save the offer to the database
         Toastr::success(translate('Content_Added_successfully'));
