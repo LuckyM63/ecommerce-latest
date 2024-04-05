@@ -134,6 +134,7 @@
 
     @endphp
 
+
     <a href="{{ route('home') }}" style="padding: 5px; font-weight: bold; font-size: 16px;">Home ></a>
 
     <a href="{{ route('productPost') }}" style="padding: 5px; font-weight: bold; font-size: 16px;">
@@ -1050,7 +1051,9 @@
                 </div>
                 <div class="accordion-content">
                     @foreach (\App\Models\categoryseo::all() as $item)
-                    <a href="{{ route('productPost') }}" class="category-link" data-id="{{ $item->id }}">{{ $item->Content }}</a>
+                    @if ($ec ==$item->Category)
+                    {{$item->Content}}  
+                    @endif
                  @endforeach
 
                 </div>

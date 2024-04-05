@@ -45,11 +45,12 @@ class ProductDetailsController extends Controller
         $product = Product::active()->with(['reviews','seller.shop'])->where('slug', $slug)->first();
         $category_id= json_decode($product->category_ids)[0]->id;
         $category_info=Category::all()->where('id',$category_id)->first()->name;
+   
 
        
     
 
-        // dd($category_info);
+         //dd($category_info);
         
         // dd($data);
         if ($product != null) {

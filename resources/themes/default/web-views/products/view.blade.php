@@ -74,7 +74,14 @@
     </style>
 @endpush
 
-@section('content')
+   @php
+       $catinfo=DB::table('categories')->select('name')->get();
+       $cat = $catinfo->pluck('name');
+       //dd($category);
+   @endphp
+   @section('content')
+
+
 
     @php($decimal_point_settings = \App\CPU\Helpers::get_business_settings('decimal_point_settings'))
     <!-- Page Title-->
@@ -360,13 +367,18 @@
             </div>
             <div class="accordion-content">
 
-             
-                 @foreach (\App\Models\categoryseo::all() as $item)
-                 <h5>{{ $item->Category }}</h5>
-                    <p>{{ $item->Content }}</p>
-                 @endforeach
+                @foreach (\App\Models\categoryseo::all() as $item)
+                    @if ($cat[0] ==$item->Category)
+                    {{$item->Content}}  
+                    @endif
+               @endforeach
+               {{-- {{$cat}} --}}
 
                
+
+            
+
+
             </div>
         </div>
     </div>
