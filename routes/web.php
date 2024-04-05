@@ -347,3 +347,7 @@ Route::get('payment-fail', 'Customer\PaymentController@fail')->name('payment-fai
 Route::get('/test', function (){
     return view('welcome');
 });
+
+
+
+

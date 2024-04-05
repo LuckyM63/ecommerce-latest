@@ -1190,7 +1190,11 @@ public function view_showoffer()
 public function view_categoryseo()
 {
     $Data =categoryseo::all()->sortByDesc('created_at');
-    // dd($offersData);
+    // $arrayData = $Data->toArray();
+    // $arr=$arrayData[0];
+    // $content=$arr['Content'];
+    //dd($content);
+
     return view('admin-views.business-settings.categoryseo.view', compact('Data'));
 }
     public function update_shiprocket(Request $request)
@@ -1335,6 +1339,9 @@ public function categoryseodelete($id , Request $request){
   }
 
 }
+
+
+
 
 
 
