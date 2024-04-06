@@ -1190,10 +1190,10 @@ public function view_showoffer()
 public function view_categoryseo()
 {
     $Data =categoryseo::all()->sortByDesc('created_at');
-    // $arrayData = $Data->toArray();
+    // $arrayData = $Data->;
     // $arr=$arrayData[0];
     // $content=$arr['Content'];
-    //dd($content);
+    // dd($Data);
 
     return view('admin-views.business-settings.categoryseo.view', compact('Data'));
 }
@@ -1229,13 +1229,13 @@ public function view_categoryseo()
         Toastr::success(translate('offer_update_successfully'));
         return redirect()->back();
     }
-    public function update_categoryseo(Request $request)
+    public function add_categoryseo(Request $request)
     {
         // Validate the request data if needed
     
         // Create a new Offer instance and fill it with the request data
         $offer = new categoryseo();
-        $offer->Category = $request->Category;
+        $offer->Category = $request['Category'];
         
         $request->validate([
             'Category'=>['required', 'max:200', 'unique:categoryseos,Category']
@@ -1337,6 +1337,65 @@ public function categoryseodelete($id , Request $request){
       Toastr::success(translate('category has been successfully deleted'));
       return redirect()->back();
   }
+
+//   public function view_categoryseo()
+// {
+//     $Data =categoryseo::all()->sortByDesc('created_at')->toArray();
+//     // $arrayData = $Data->;
+//     // $arr=$arrayData[0];
+//     // $content=$arr['Content'];
+//     // dd($Data);
+
+//     return view('admin-views.business-settings.categoryseo.view', compact('Data'));
+// }
+
+public function categoryseoedit($id){
+    $Data = Categoryseo::find($id);
+
+    if(is_null($Data)){
+        $request->session()->flash('error','Record not found');
+        return redirect()->back();
+    } else {
+        // Move the Toastr message inside the else block
+        
+        return view('admin-views.business-settings.categoryseo.edit', compact('Data'));
+        
+    }
+}
+
+public function categoryseoupdate($id, Request $request){
+    $offer = Categoryseo::find($id);
+    
+    // Validate the request data
+    // $request->validate([
+    //     'Category' => ['required', 'max:200', Rule::unique('categoryseos')->ignore($offer->id)],
+    //     'blog' => 'required' // Assuming 'blog' field is required
+    // ], [
+    //     'Category.unique' => 'Category already exists!'
+    // ]);
+
+    // Update the offer properties
+    $offer->Category = $request->input('Category');
+    $offer->Content = $request->input('blog'); // Corrected 'blog' field name
+
+    // Save the changes to the database
+    $offer->save();
+
+    // Flash success message
+    Toastr::success(translate('Content updated successfully'));
+
+    // Redirect back to the previous page
+    return redirect()->back();
+}
+
+// public function edit(){
+//     $edit = Categoryseo::all();    
+//     return view('admin-views.business-settings.categoryseo.edit', compact('edit'));
+
+// }
+
+ 
+
 
 }
 

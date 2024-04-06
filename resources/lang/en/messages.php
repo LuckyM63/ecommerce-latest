@@ -6883,4 +6883,7 @@
   'Offer not found' => 'Offer not found',
   'category has been successfully deleted' => 'Category has been successfully deleted',
   'want_to_delete_this_category' => 'Want to delete this category',
+  'category has been successfully update' => 'Category has been successfully update',
+  'Category has been successfully updated' => 'Category has been successfully updated',
+  'Content updated successfully' => 'Content updated successfully',
 );

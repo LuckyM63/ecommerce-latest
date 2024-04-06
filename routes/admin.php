@@ -211,10 +211,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
         // categoryseo routes
         Route::group(['prefix' => 'categoryseo', 'as' => 'categoryseo.', 'middleware' => ['module:system_settings']], function () {
             Route::get('view', "BusinessSettingsController@view_categoryseo")->name('view');
-            Route::post('Addoffer', 'BusinessSettingsController@update_categoryseo')->name('Add');
-           Route::get('update/{id}','BusinessSettingsController@updateStatus')->name('updateOffer');
+            Route::post('Addoffer', 'BusinessSettingsController@add_categoryseo')->name('Add');
+           Route::post('update/{id}','BusinessSettingsController@categoryseoupdate')->name('categoryseoupdate');
+           Route::get('edit/{id}','BusinessSettingsController@categoryseoedit')->name('categoryseoedit');
            Route::get('delete/{id}','BusinessSettingsController@categoryseodelete')->name('categoryseodelete');
+         
            Route::post('/submit-form','BusinessSettingsController@store')->name('submit.form'); 
+        //    Route::get('/edit','BusinessSettingsController@edit')->name('edit'); 
         });
      
 
