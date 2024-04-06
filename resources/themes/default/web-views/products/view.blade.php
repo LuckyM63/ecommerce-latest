@@ -74,17 +74,12 @@
     </style>
 @endpush
 
-@php
-    $catinfo = DB::table('categories')->select('name')->get();
-    $cat = $catinfo->pluck('name');
-@endphp
-@php
-    $item = DB::table('categoryseos')->get();
-    $itemcategory = $item->pluck('Category');
-    $itemcontent = $item->pluck('Content');
-
-@endphp
-@section('content')
+   @php
+       $catinfo=DB::table('categories')->select('name')->get();
+       $cat = $catinfo->pluck('name');
+       //dd($category);
+   @endphp
+   @section('content')
 
 
 
@@ -371,14 +366,17 @@
                 <span class="arrow-icon">▼</span>
             </div>
             <div class="accordion-content">
-                @foreach ($cat as $index => $category)
-                @if (isset($itemcategory[$index]) && isset($itemcontent[$index]))
-                    @if ($category == $itemcategory[$index])
-                        {{$itemcontent[$index]}}
-                    @endif
-                @endif
-            @endforeach
 
+                @foreach (\App\Models\categoryseo::all() as $item)
+                    @if ($cat[0] ==$item->Category)
+                    {{$item->Content}}  
+                    @endif
+               @endforeach
+               {{-- {{$cat}} --}}
+
+               
+
+            
 
 
             </div>
