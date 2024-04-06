@@ -37,8 +37,8 @@ class GatewaysServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
 
-        $info = include('Modules/Gateways/Addon/info.php');
-        if ($info['is_published']) {
+        $info = include_once('Modules/Gateways/Addon/info.php');
+        if (is_array($info) && $info['is_published']) {
             foreach ($info['migrations'] as $increment => $migration) {
                 if ($migration['value'] == 0) {
                     $count = Setting::whereIn('key_name', $migration['key_names'])->where('settings_type', $migration['settings_type'])->count();

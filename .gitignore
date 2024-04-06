@@ -2,6 +2,7 @@
 /storage/*.key
 .vscode
 .idea
+.env
 .env.backup
 .phpunit.result.cache
 Homestead.json

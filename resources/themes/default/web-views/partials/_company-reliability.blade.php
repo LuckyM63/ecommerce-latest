@@ -12,7 +12,7 @@
    
       @foreach ($data as $item)
       <h5>{{ $item->Category }}</h5>
-          <p>{{ $item->Content }}</p>
+          <p>{!! $item->Content !!}</p>
       @endforeach
         
         </div>
