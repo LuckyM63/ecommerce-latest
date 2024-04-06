@@ -40,20 +40,20 @@
                     <div>                  
                    </div>
                     </div>
-                    <select name="Category" style="padding:5px; margin:10px; border-radius:5px"  >
-    <option value=""> {{$Data->Category}} </option >
-    <option value="Imported">Imported  </option>
-    <option value="Skin Care">Skin Care  </option>
-    <option value="Hair Care">Hair Care</option>
-    <option value="Face">Face</option>
-    <option value="Eyes">Eyes  </option>
-    <option value="Lips">Lips</option>
-    <option value="Fragrance">Fragrance</option>
-    <option value="Men">Men</option>
-    <option value="Bath&Body">Bath&Body</option>
-    <option value="Accesories">Accesories</option>
-    <option value="Gifts&Combos">Gifts&Combos</option>
-</select>
+                    <select name="Category" style="padding:5px; margin:10px; border-radius:5px">
+                        <option value="">Select Category</option>
+                        <option value="Imported" {{ $Data->Category == 'Imported' ? 'selected' : '' }}>Imported</option>
+                        <option value="Skin Care" {{ $Data->Category == 'Skin Care' ? 'selected' : '' }}>Skin Care</option>
+                        <option value="Hair Care" {{ $Data->Category == 'Hair Care' ? 'selected' : '' }}>Hair Care</option>
+                        <option value="Face" {{ $Data->Category == 'Face' ? 'selected' : '' }}>Face</option>
+                        <option value="Eyes" {{ $Data->Category == 'Eyes' ? 'selected' : '' }}>Eyes</option>
+                        <option value="Lips" {{ $Data->Category == 'Lips' ? 'selected' : '' }}>Lips</option>
+                        <option value="Fragrance" {{ $Data->Category == 'Fragrance' ? 'selected' : '' }}>Fragrance</option>
+                        <option value="Men" {{ $Data->Category == 'Men' ? 'selected' : '' }}>Men</option>
+                        <option value="Bath&Body" {{ $Data->Category == 'Bath&Body' ? 'selected' : '' }}>Bath & Body</option>
+                        <option value="Accesories" {{ $Data->Category == 'Accesories' ? 'selected' : '' }}>Accesories</option>
+                        <option value="Gifts&Combos" {{ $Data->Category == 'Gifts&Combos' ? 'selected' : '' }}>Gifts & Combos</option>
+                    </select>
 <div class="row">
                                         <div class="col-md-6">
                                             <label for="blog">Blog</label>
@@ -82,7 +82,8 @@
     </div>
 @endsection
 @push('script')
-<!-- <script>
+
+<script>
     function applyFormat(format) {
         var textarea = document.getElementById('textEditor');
         var text = textarea.value;
@@ -103,6 +104,6 @@
         
         textarea.value = text;
     }
-</script> -->
+</script> 
     <!-- Add any additional scripts if needed -->
 @endpush
