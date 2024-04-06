@@ -6,6 +6,7 @@
 
 @push('css_or_js')
     <!-- Add any CSS or JS files if needed -->
+    <script src="{{asset('public/assets/back-end')}}/js/ckeditor.js"></script>
 @endpush
 
 @section('content')
@@ -57,8 +58,7 @@
 <div class="row">
                                         <div class="col-md-6">
                                             <label for="blog">Blog</label>
-                                            <!-- <input type="textarea" style="width: 500px; height: 200px;" name="blog"> -->
-                                            <textarea name="blog" style="width: 500px; height: 200px;" placeholder="Please enter details..."></textarea>
+                                            <textarea name="blog" style="width: 500px; height: 200px;" id="editor" placeholder="Please enter details..."></textarea>
 
                                         </div>
                                     </div> <br>
@@ -86,12 +86,12 @@
                 <tbody>
                     @foreach ($Data as $Item)
                      
-                
+                    <!-- $plainTextContent = strip_tags($content);            -->
                     
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
                             <td>{{ $Item->Category}}</td>
-                            <td>{{ $Item->Content}}</td>
+                            <td>{!! $Item->Content!!}</td>
                             <td>{{ $Item->Toggle}}</td>
                             
                             <td>
@@ -132,6 +132,14 @@
     </div>
 @endsection
 @push('script')
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
 <!-- <script>
     function applyFormat(format) {
         var textarea = document.getElementById('textEditor');
@@ -156,3 +164,14 @@
 </script> -->
     <!-- Add any additional scripts if needed -->
 @endpush
+
+@section('scripts')
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+@endsection

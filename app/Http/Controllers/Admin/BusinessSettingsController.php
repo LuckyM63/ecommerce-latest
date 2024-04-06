@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\DB;
 use phpseclib3\Crypt\RSA\Formats\Keys\JWK;
 use Carbon\Carbon;
 use App\Models\categoryseo;
+use DOMDocument;
+
 // use App\Model\Offer;
 
 class BusinessSettingsController extends Controller
@@ -1242,34 +1244,25 @@ public function view_categoryseo()
         ],[
             'name.unique' => 'Category Already exists!'
         ]);
-        
-        
-        // Assuming 'offer_id' is the field name from the form
-        // categoryseo::create([
-        //     'Category' => $request->input('category'),
-        // ]);
-        $offer->Content = $request['blog']; // Assuming the status is always enabled (1)
-        $offer->save(); // Save the offer to the database
+        //   $offer->Content = $request['blog']; 
+       // Get the content from the CKEditor input
+$contentFromEditor = $request->input('blog');
+// Assign the content to the $offer->Content property
+$offer->Content = $contentFromEditor;
+        // $allowedTags = '<strong>'; // Add other tags if needed
+// Strip all tags except allowed tags
+    // $cleanedContent = strip_tags($request['blog']);
+// Assign cleaned content to the $offer->Content property
+        // $offer->Content = $cleanedContent;
+
+// Save the offer
+$offer->save();
+
+
+        $offer->save(); // Saved to the database
         Toastr::success(translate('Content_Added_successfully'));
         return redirect()->back();
     }
-
-    // public function update_status(Request $request)
-    // {
-    //        // Find the offer by its ID
-    // $offer = Offer::findOrFail($id);
-    // // dd($offer);
-
-    // // Toggle the status between 1 and 0
-    // $offer->status = $offer->status == 1 ? 0 : 1;
-    
-    // // Save the changes
-    // $offer->save();
-
-    // return response()->json(['message' => 'Status updated successfully'], 200);
-
-    // }
-
 
     public function updateStatus($id, Request $request)
     {
@@ -1296,9 +1289,6 @@ public function view_categoryseo()
 
     public function deleteOffer($id , Request $request){
       $deletofferid =  DB::table('offers')->where('id', $id)->first();
-
-
-
       if(!$deletofferid){
           $request->session()->flash('error','record not found');
           return redirect()->back();
