@@ -93,22 +93,13 @@
                             <td>{{ $Item->Category}}</td>
                             <td>{!! $Item->Content!!}</td>
                             <td>{{ $Item->Toggle}}</td>
-                            
-                            <td>
-                                <form action="{{route('admin.categoryseo.updateOffer',['id' => $Item->id])}}" method="POST" class="customer_status_form">
-                                    @csrf
-                                    @method('patch')
-                                    {{-- <input type="hidden" name="id" value="{{$Item->id}}">
-                                    <label class="switcher mx-auto">
-                                        <input type="checkbox" class="switcher_input"  name="status" class="toggle-switch-input" {{ $Item->status == 1 ? 'checked':'' }} 
-                                        id="status{{$Item->id}}" onclick="toogleStatusModal('{{$Item->status}}','status{{$Item->id}}','status-on.png','status-off.png','{{translate('Want_to_Turn_ON_Status')}}','{{translate('Want_to_Turn_OFF_Status')}}',`<p>{{translate('if_enabled_this_status_will_be_available_throughout_the_entire_system')}}</p>`,`<p>{{translate('if_disabled_this_status_will_be_hidden_from_the_entire_system')}}</p>`)">
-                                        <span class="switcher_control"></span>
-                                    </label>  --}}
 
-                                    <a href="{{route('admin.categoryseo.updateOffer',['id' => $Item->id])}}" class="btn btn-sm btn-{{$Item->status?'success':'danger'}}"> 
-                                        {{$Item->status?'enable':'disable'}}</a>
-                                </form>
-                            </td>
+                            <td><a href="{{route('admin.categoryseo.categoryseoedit',['id' => $Item->id])}}" class="btn btn-success">edit</a></td>
+
+                        
+                            
+                           
+                            
                             <td>
                                 <div class="d-flex justify-content-center gap-2">
                                 </div>
