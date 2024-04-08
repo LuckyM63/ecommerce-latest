@@ -1355,16 +1355,6 @@ public function categoryseoedit($id){
 
 public function categoryseoupdate($id, Request $request){
     $offer = Categoryseo::find($id);
-    
-    // Validate the request data
-    // $request->validate([
-    //     'Category' => ['required', 'max:200', Rule::unique('categoryseos')->ignore($offer->id)],
-    //     'blog' => 'required' // Assuming 'blog' field is required
-    // ], [
-    //     'Category.unique' => 'Category already exists!'
-    // ]);
-
-    // Update the offer properties
     $offer->Category = $request->input('Category');
     $offer->Content = $request->input('blog'); // Corrected 'blog' field name
 
@@ -1373,18 +1363,10 @@ public function categoryseoupdate($id, Request $request){
 
     // Flash success message
     Toastr::success(translate('Content updated successfully'));
-
     // Redirect back to the previous page
+    // header("Location:admin-views.business-settings.categoryseo.view");
     return redirect()->back();
 }
-
-// public function edit(){
-//     $edit = Categoryseo::all();    
-//     return view('admin-views.business-settings.categoryseo.edit', compact('edit'));
-
-// }
-
- 
 
 
 }

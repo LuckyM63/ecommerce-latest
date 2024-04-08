@@ -8,7 +8,19 @@
     <!-- Add any CSS or JS files if needed -->
     <script src="{{asset('public/assets/back-end')}}/js/ckeditor.js"></script>
 @endpush
-
+@push('script')
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            plugins: [ 'AutoGrow' ], // Include the AutoGrow plugin
+            autoGrow_minHeight: 200, // Set the minimum height
+            autoGrow_maxHeight: 500, // Set the maximum height
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+@endpush
 @section('content')
     <div class="content container-fluid">
         <!-- Page Title -->
@@ -58,7 +70,7 @@
 <div class="row">
                                         <div class="col-md-6">
                                             <label for="blog">Blog</label>
-                                            <textarea name="blog" style="width: 500px; height: 200px;" id="editor" placeholder="Please enter details..."></textarea>
+                                            <texteditor name="blog" style="width: 500px; height: 500px; rows:5; cols:20" id="editor" placeholder="Please enter details..."></texteditor>
 
                                         </div>
                                     </div> <br>
@@ -94,7 +106,7 @@
                             <td>{!! $Item->Content!!}</td>
                             <td>{{ $Item->Toggle}}</td>
 
-                            <td><a href="{{route('admin.categoryseo.categoryseoedit',['id' => $Item->id])}}" class="btn btn-success">edit</a></td>
+                            <td><a href="{{route('admin.categoryseo.categoryseoedit',['id' => $Item->id])}}" class="btn btn-primary">Edit</a></td>
 
                         
                             
@@ -164,5 +176,7 @@
             console.error( error );
         } );
 </script>
+
+
 
 @endsection

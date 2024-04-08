@@ -6,6 +6,8 @@
 
 @push('css_or_js')
     <!-- Add any CSS or JS files if needed -->
+    <script src="{{asset('public/assets/back-end')}}/js/ckeditor.js"></script>
+
 @endpush
 
 @section('content')
@@ -39,7 +41,7 @@
                         </div>
                     <div>                  
                    </div>
-                    </div>
+                </div>
                     <select name="Category" style="padding:5px; margin:10px; border-radius:5px">
                         <option value="">Select Category</option>
                         <option value="Imported" {{ $Data->Category == 'Imported' ? 'selected' : '' }}>Imported</option>
@@ -58,13 +60,17 @@
                                         <div class="col-md-6">
                                             <label for="blog">Blog</label>
                                             <!-- <input type="textarea" style="width: 500px; height: 200px;" name="blog"> -->
-                                            <textarea name="blog" style="width: 500px; height: 200px;" placeholder="Please enter details..."  >{{$Data->Content}}</textarea>
+                                            <textarea name="blog" style="width: 500px; height: 200px;" placeholder="Please enter details..." id="editor" >{{$Data->Content}}</textarea>
 
                                         </div>
                                     </div> <br>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">{{ translate('Submit') }}</button>
-                    </div>
+    
+    <!-- Your form fields go here -->
+    <div class="form-group">
+    <!-- <a href="view.blade.php" type="submit" class="btn btn-secondary" id="submitButton">Back</a> -->
+    <button type="submit" class="btn btn-primary" id="submitButton">{{ translate('Submit') }}</button>
+    </div>
+
                 </form>
             </div>
         </div>
@@ -106,4 +112,11 @@
     }
 </script> 
     <!-- Add any additional scripts if needed -->
+    <script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endpush

@@ -1052,7 +1052,7 @@
                 <div class="accordion-content">
                     @foreach (\App\Models\categoryseo::all() as $item)
                     @if ($ec ==$item->Category)
-                    {{$item->Content}}  
+                    {!!$item->Content!!}  
                     @endif
                  @endforeach
 

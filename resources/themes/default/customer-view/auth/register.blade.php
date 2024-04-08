@@ -40,16 +40,25 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="form-group">
-                                <label class="form-label font-semibold">{{ translate('phone_number')}}
-                                    <small class="text-primary">( * {{ translate('country_code_is_must_like_for_BD')}} 880 )</small></label>
-                                <input class="form-control" type="number"  value="{{old('phone')}}"  name="phone"
-                                        style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                                        placeholder="{{ translate('enter_phone_number') }}"
-                                        required>
-                                <div class="invalid-feedback">{{ translate('please_enter_your_phone_number')}}!</div>
-                            </div>
-                        </div>
+    <div class="form-group">
+        <label class="form-label font-semibold">{{ translate('phone_number')}}
+            <small class="text-primary"></small>
+        </label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <select class="custom-select" style="max-width: 120px;" id="countryCode" name="countryCode">
+                    <option value="+91">+91(India)</option> <!-- India country code -->
+                    <!-- Add other country codes as needed -->
+                </select>
+            </div>
+            <input class="form-control" type="text" value="{{ old('phone') }}" name="phone"
+                style="text-align: {{ Session::get('direction') === 'rtl' ? 'right' : 'left' }};"
+                placeholder="{{ translate('enter_phone_number') }}" required>
+        </div>
+        <div class="invalid-feedback">{{ translate('please_enter_your_phone_number')}}!</div>
+    </div>
+</div>
+
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label class="form-label font-semibold">{{ translate('password')}}</label>

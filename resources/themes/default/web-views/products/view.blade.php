@@ -74,15 +74,17 @@
     </style>
 @endpush
 
-   @php
-       $catinfo=DB::table('categories')->select('name')->get();
-       $cat = $catinfo->pluck('name');
-       //dd($category);
-   @endphp
+@php
+    $catinfo = DB::table('categories')->select('name')->get();
+    $cat = $catinfo->pluck('name');
+    //dd($cat);
+
+    $catseos = DB::table('categoryseos')->get();
+    //dd($catseos);
+    $items = $catseos->pluck('Category');
+    //dd($items)
+@endphp
    @section('content')
-
-
-
     @php($decimal_point_settings = \App\CPU\Helpers::get_business_settings('decimal_point_settings'))
     <!-- Page Title-->
     <div class="container py-3" dir="{{ Session::get('direction') }}">
@@ -359,30 +361,30 @@
             </section>
         </div>
     </div>
+   
     <div class="accordion">
         <div class="accordion-item">
             <div class="accordion-header">
                 More About My Glamour
                 <span class="arrow-icon">▼</span>
             </div>
+          
             <div class="accordion-content">
+    @foreach ($items as $item)
+        @if ($cat->contains($item))
+            <?php
+                // Find the corresponding content from $catseos
+                $content = $catseos->where('Category', $item)->first();
+            ?>
+            <p>{!! $content->Content !!}</p>
+           @break;
+        @endif        
+    @endforeach
+</div>
 
-                @foreach (\App\Models\categoryseo::all() as $item)
-                    @if ($cat[0] ==$item->Category)
-                    {{$item->Content}}  
-                    @endif
-               @endforeach
-               {{-- {{$cat}} --}}
 
-               
-
-            
-
-
-            </div>
         </div>
     </div>
-
     <style>
         .accordion {
             border: 1px solid #ccc;

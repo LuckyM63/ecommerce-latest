@@ -215,10 +215,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
            Route::post('update/{id}','BusinessSettingsController@categoryseoupdate')->name('categoryseoupdate');
            Route::get('edit/{id}','BusinessSettingsController@categoryseoedit')->name('categoryseoedit');
            Route::get('delete/{id}','BusinessSettingsController@categoryseodelete')->name('categoryseodelete');
-         
-           Route::post('/submit-form','BusinessSettingsController@store')->name('submit.form'); 
-        //    Route::get('/edit','BusinessSettingsController@edit')->name('edit'); 
-        });
+         });
      
 
         Route::get('offer',[offerController::class, 'index']);
