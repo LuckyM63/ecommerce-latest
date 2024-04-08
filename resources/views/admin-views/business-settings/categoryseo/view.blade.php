@@ -92,26 +92,17 @@
                         <th class="text-center">{{ translate('Content') }}</th>
                         <th class="text-center">{{ translate('Toggle') }}</th>
                         <th class="text-center">{{ translate('Action') }}</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($Data as $Item)
-                     
-                    <!-- $plainTextContent = strip_tags($content);            -->
-                    
+                    @foreach ($Data as $Item)                    
+                    <!-- $plainTextContent = strip_tags($content);            -->                   
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
                             <td>{{ $Item->Category}}</td>
                             <td>{!! $Item->Content!!}</td>
                             <td>{{ $Item->Toggle}}</td>
-
-                            <td><a href="{{route('admin.categoryseo.categoryseoedit',['id' => $Item->id])}}" class="btn btn-primary">Edit</a></td>
-
-                        
-                            
-                           
-                            
+                            <td><a href="{{route('admin.categoryseo.categoryseoedit',['id' => $Item->id])}}" class="btn btn-primary">Edit</a></td>                          
                             <td>
                                 <div class="d-flex justify-content-center gap-2">
                                 </div>
